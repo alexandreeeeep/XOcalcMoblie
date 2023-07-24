@@ -7,7 +7,7 @@
     <StackLayout Orientation="Vertical">
         
         <StackLayout Orientation="Horizontal">
-            <SearchBar MaxLength="20">
+            <SearchBar MaxLength="20" IsSpellCheckEnabled="True" Placeholder="Search items..." HorizontalTextAlignment="Center">
 
             </SearchBar>
         </StackLayout>
