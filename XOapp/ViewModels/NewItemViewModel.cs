@@ -257,7 +257,7 @@ namespace XOapp.ViewModels
                float.Parse(Item[4]) / 10f * float.Parse("3.5") +
                float.Parse(Item[5]) / 100f * float.Parse("70") +
                float.Parse(Item[6]) / 10f * float.Parse("12") +
-               float.Parse(Item[7]) / 10f * float.Parse("600") + 
+               float.Parse(Item[7]) / 10f * float.Parse("600") +
                float.Parse(CalculateCostOfItem(Item[8])) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10])) * float.Parse(Item[11]) +
                float.Parse(CalculateCostOfItem(Item[12])) * float.Parse(Item[13]) + float.Parse(Item[14]));
@@ -274,7 +274,7 @@ namespace XOapp.ViewModels
         private bool ValidateSave()
         {
             float.TryParse(description, out float value);
-            
+
             return !String.IsNullOrWhiteSpace(text)
                 && !float.IsNaN(value);
         }
@@ -313,7 +313,7 @@ namespace XOapp.ViewModels
                 Description = Description
 
             };
-           
+
             await DataStore.AddItemAsync(newItem);
 
             // This will pop the current page off the navigation stack
