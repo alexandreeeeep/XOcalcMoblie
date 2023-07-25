@@ -6,25 +6,25 @@
              Title="{Binding Title}">
     <StackLayout Orientation="Vertical">
         
-        <StackLayout Orientation="Horizontal">
-            <SearchBar MaxLength="20" IsSpellCheckEnabled="True" Placeholder="Search items..." HorizontalTextAlignment="Center">
+        <StackLayout Orientation="Vertical">
+            <SearchBar MaxLength="20" IsSpellCheckEnabled="True" Placeholder="Search items..."
+                       HorizontalTextAlignment="Center" TextChanged="SearchBar_TextChanged" 
+                       x:Name="searchBar"/>
+            <ListView x:Name="searchResults" VerticalOptions="StartAndExpand"/>
+        </StackLayout>
 
-            </SearchBar>
+
+        <StackLayout Orientation="Horizontal" Padding="10" Spacing="30">
+            <Label x:Name="ItemName1" Text="Item 1 Cost" />
+            <Label x:Name="ItemName2" Text="Item 2 Cost"/>
+            <Label x:Name="ItemName3" Text="Item 3 Cost"/>
         </StackLayout>
         
-        
         <StackLayout Orientation="Horizontal" Padding="10" Spacing="30">
-             <Label x:Name="ItemName1" Text="Item 1 Cost" />
-             <Label Text="Item 1 amount"/>
-             <Label x:Name="ItemName2" Text="Item 2 Cost"/>
-             <Label Text="Item 2 amount"/>
-             <Label x:Name="ItemName3" Text="Item 3 Cost"/>
-             <Label Text="Item 3 amount"/>
-    </StackLayout>
-        
-         <StackLayout Orientation="Horizontal">
-           
-         </StackLayout>
+            <Label Text="Item 1 amount"/>
+            <Label Text="Item 2 amount"/>
+            <Label Text="Item 3 amount"/>
+        </StackLayout>
         
     </StackLayout>
 </ContentPage>
