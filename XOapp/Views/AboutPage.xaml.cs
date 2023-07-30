@@ -52,6 +52,10 @@ namespace XOapp.Views
             else { searchResults.ItemsSource = null; }//displayes nothing if there is nothing in search bar
 
         }
+        private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            searchBar.Text = e.Item.ToString();
+        }
 
         List<string> AllItems;
         public string[] ItemName = {
@@ -278,5 +282,6 @@ namespace XOapp.Views
 "porcupine_0_1000_0_1000_0_1000_600_retcher_1_hurricane_1_Empty_0_75",
 "ripper_0_1000_0_1000_0_1000_600_fortune_1_mg14 arbiter_1_Empty_0_75",
 "scorpion_0_1000_0_1000_0_1000_600_pulsar_1_reaper_1_Empty_0_75"};
+
     }
 }

@@ -10,7 +10,7 @@
             <SearchBar MaxLength="20" IsSpellCheckEnabled="True" Placeholder="Search items..."
                        HorizontalTextAlignment="Center" TextChanged="SearchBar_TextChanged" 
                        x:Name="searchBar"/>
-            <ListView x:Name="searchResults" VerticalOptions="StartAndExpand"/>
+            <ListView x:Name="searchResults" VerticalOptions="StartAndExpand" ItemTapped="searchResults_ItemTapped" HeightRequest="100"/>
         </StackLayout>
 
 
