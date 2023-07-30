@@ -33,6 +33,77 @@ namespace XOapp.Views
                 }
             }
         }
+        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            Total.Text = "Cost: "+CalculateCostOfItem(searchBar.Text);
+        }
+        private string CalculateCostOfItem(string ItemName)//calculates cost of item
+        {
+            if (ItemName == "Empty" || ItemName == "")
+            {
+                return "0";
+            }
+            if (float.TryParse(ItemName, out float Result))
+            {
+                return Convert.ToString(Result);
+            }
+            string[] Item = SeparateList(FindValue(ItemName));//finds the item and creates list
+            if (Item[0] == "Item Not Found (make sure the item is spelt correctly and is craftable)")
+            {
+                return ItemName;
+            }
+            //calculates value of item and calculates other items if needed
+            return Convert.ToString(float.Parse("10") / 100f * float.Parse(Item[1]) +
+            float.Parse(Item[2]) * float.Parse("7") / 100f +
+               float.Parse("20") / 100 * float.Parse(Item[3]) +
+               float.Parse(Item[4]) / 10f * float.Parse("3.5") +
+               float.Parse(Item[5]) / 100f * float.Parse("70") +
+               float.Parse(Item[6]) / 10f * float.Parse("12") +
+               float.Parse(Item[7]) / 10f * float.Parse("600") +
+               float.Parse(CalculateCostOfItem(Item[8])) * float.Parse(Item[9]) +
+               float.Parse(CalculateCostOfItem(Item[10])) * float.Parse(Item[11]) +
+               float.Parse(CalculateCostOfItem(Item[12])) * float.Parse(Item[13]) + float.Parse(Item[14]));
+        }
+        string FindValue(string SearchItem)//finds the name in the text file
+        {
+            // Calling the ReadAllLines() function
+            string ItemFound;
+            foreach (string line in ItemName)//itarates threw each line
+            {
+                ItemFound = "";
+                foreach (char c in line)
+                {//itarates threw each letter 
+                    if (c != '_')//finds the end of the first word
+                    {
+                        ItemFound += c.ToString();
+                    }
+                    else if (ItemFound == SearchItem && ItemFound != "")
+                    {
+                        return line;
+                    }
+                    else { break; }
+                }
+            }
+            return "Item Not Found (make sure the item is spelt correctly and is craftable)";//returns if item not found
+        }
+        string[] SeparateList(string ItemName)//finds the name in the text file
+        {
+            string[] Item = new string[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+            int CountForList = 0;
+            for (int i = 0; i < ItemName.Length; i++)
+            {//itarates threw each letter
+                if (ItemName[i] != '_')//finds the end of the first word
+                {
+                    Item[CountForList] += ItemName[i];
+                }
+                else
+                {
+                    CountForList++;
+                }
+            }
+            return Item;
+        }
+
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -283,5 +354,6 @@ namespace XOapp.Views
 "ripper_0_1000_0_1000_0_1000_600_fortune_1_mg14 arbiter_1_Empty_0_75",
 "scorpion_0_1000_0_1000_0_1000_600_pulsar_1_reaper_1_Empty_0_75"};
 
+        
     }
 }
