@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using XOapp.Models;
 using XOapp.ViewModels;
 using XOapp.Views;
+using XOapp.Services; 
 
 namespace XOapp.Views
 {
@@ -17,12 +18,20 @@ namespace XOapp.Views
         public ItemsPage()
         {
             InitializeComponent();
-
+        }
+        public string getValues()
+        {
+            return scrap.Text;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+        }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

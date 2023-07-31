@@ -6,5 +6,5 @@
              xmlns:local="clr-namespace:XOapp.ViewModels"  
              xmlns:model="clr-namespace:XOapp.Models"  
              x:Name="BrowseItemsPage">
-    <SearchBar Placeholder="input scrap"/>
+    <Entry TextChanged="Entry_TextChanged" x:Name="scrap"/>
 </ContentPage>

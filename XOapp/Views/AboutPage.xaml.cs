@@ -35,7 +35,9 @@ namespace XOapp.Views
         }
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-            Total.Text = "Cost: "+CalculateCostOfItem(searchBar.Text);
+            //ItemsPage itemsPage = new ItemsPage();
+            //itemsPage.getValues();
+            Total.Text = "Cost: " + CalculateCostOfItem(searchBar.Text);
         }
         private string CalculateCostOfItem(string ItemName)//calculates cost of item
         {
