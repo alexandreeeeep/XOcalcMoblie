@@ -6,5 +6,35 @@
              xmlns:local="clr-namespace:XOapp.ViewModels"  
              xmlns:model="clr-namespace:XOapp.Models"  
              x:Name="BrowseItemsPage">
-    <Entry TextChanged="Entry_TextChanged" x:Name="scrap"/>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Scrap cost per 100: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="scrap"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Copper cost per 100: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="Copper"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Wires cost per 100: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="Wires"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Plastic cost per 100: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="Plasric"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Batteries cost per 10: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="Batteries"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Electronics cost per 10: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="Electronics"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="30">
+            <Label Text="Uranium cost per 10: "/>
+            <Entry TextChanged="Entry_TextChanged" x:Name="Uranium"/>
+        </StackLayout>
+
+    </StackLayout>
 </ContentPage>

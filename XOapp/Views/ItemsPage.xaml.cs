@@ -19,9 +19,9 @@ namespace XOapp.Views
         {
             InitializeComponent();
         }
-        public string getValues()
+        public string[] getValues()
         {
-            return scrap.Text;
+            return new string[] { scrap.Text, Copper.Text,Wires.Text,Plasric.Text,Batteries.Text,Electronics.Text,Uranium.Text};
         }
 
         protected override void OnAppearing()
@@ -31,7 +31,21 @@ namespace XOapp.Views
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            Entry inputBox = (Entry)sender;
+            if (e.NewTextValue != null) {//prevents a crash from occuring if two invalid buttons are pressed at the same 
+                if (!e.NewTextValue.All("1234567890.".Contains))
+                {
+                        inputBox.Text = e.OldTextValue;
+                }
+            }
+            else
+            {
+                inputBox.Text = "";
+            }
+            if (inputBox.Text.IndexOf(".") != inputBox.Text.LastIndexOf("."))//prevents double decimal points
+            {
+                inputBox.Text = e.OldTextValue;
+            }
         }
     }
 }

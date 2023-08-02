@@ -41,7 +41,7 @@ namespace XOapp.Views
         }
         private string CalculateCostOfItem(string ItemName)//calculates cost of item
         {
-            if (ItemName == "Empty" || ItemName == "")
+            if (ItemName == "Empty" || ItemName == "")//nothing in search bar
             {
                 return "0";
             }
@@ -52,7 +52,7 @@ namespace XOapp.Views
             string[] Item = SeparateList(FindValue(ItemName));//finds the item and creates list
             if (Item[0] == "Item Not Found (make sure the item is spelt correctly and is craftable)")
             {
-                return ItemName;
+                return Item[0];
             }
             //calculates value of item and calculates other items if needed
             return Convert.ToString(float.Parse("10") / 100f * float.Parse(Item[1]) +
