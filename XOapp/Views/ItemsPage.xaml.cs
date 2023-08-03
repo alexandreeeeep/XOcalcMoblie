@@ -9,7 +9,10 @@ using Xamarin.Forms.Xaml;
 using XOapp.Models;
 using XOapp.ViewModels;
 using XOapp.Views;
-using XOapp.Services; 
+using XOapp.Services;
+using System.Net;
+using System.IO;
+using XOapp.Interface;
 
 namespace XOapp.Views
 {
@@ -18,10 +21,6 @@ namespace XOapp.Views
         public ItemsPage()
         {
             InitializeComponent();
-        }
-        public string[] getValues()
-        {
-            return new string[] { scrap.Text, Copper.Text,Wires.Text,Plasric.Text,Batteries.Text,Electronics.Text,Uranium.Text};
         }
 
         protected override void OnAppearing()
@@ -37,15 +36,18 @@ namespace XOapp.Views
                 {
                         inputBox.Text = e.OldTextValue;
                 }
+                else if (inputBox.Text.IndexOf(".") != inputBox.Text.LastIndexOf("."))//prevents double decimal points
+                {
+                    inputBox.Text = e.OldTextValue;
+                }
             }
+
             else
             {
                 inputBox.Text = "";
             }
-            if (inputBox.Text.IndexOf(".") != inputBox.Text.LastIndexOf("."))//prevents double decimal points
-            {
-                inputBox.Text = e.OldTextValue;
-            }
+            var values =Scrap.Text+"_"+ Copper.Text + "_" + Wires.Text + "_" + Plasric.Text + "_" + Batteries.Text + "_" + Electronics.Text + "_" + Uranium.Text;
+            DependencyService.Get<IfileService>().CreateFile(values);
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XOapp.Interface;
+using XOapp.Services;
 using XOapp.ViewModels;
 
 namespace XOapp.Views
@@ -35,8 +38,7 @@ namespace XOapp.Views
         }
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-            //ItemsPage itemsPage = new ItemsPage();
-            //itemsPage.getValues();
+            
             Total.Text = "Cost: " + CalculateCostOfItem(searchBar.Text);
         }
         private string CalculateCostOfItem(string ItemName)//calculates cost of item
@@ -54,14 +56,16 @@ namespace XOapp.Views
             {
                 return Item[0];
             }
+            string[] resources =DependencyService.Get<IfileService>().ReadFile();
+            string[] costs = SeparateList(resources[0]);
             //calculates value of item and calculates other items if needed
-            return Convert.ToString(float.Parse("10") / 100f * float.Parse(Item[1]) +
-            float.Parse(Item[2]) * float.Parse("7") / 100f +
-               float.Parse("20") / 100 * float.Parse(Item[3]) +
-               float.Parse(Item[4]) / 10f * float.Parse("3.5") +
-               float.Parse(Item[5]) / 100f * float.Parse("70") +
-               float.Parse(Item[6]) / 10f * float.Parse("12") +
-               float.Parse(Item[7]) / 10f * float.Parse("600") +
+            return Convert.ToString(float.Parse(costs[0]) / 100f * float.Parse(Item[1]) +
+               float.Parse(Item[2]) * float.Parse(costs[1]) / 100f +
+               float.Parse(costs[2]) / 100f * float.Parse(Item[3]) +
+               float.Parse(Item[4]) / 10f * float.Parse(costs[4]) +
+               float.Parse(Item[5]) / 100f * float.Parse(costs[3]) +
+               float.Parse(Item[6]) / 10f * float.Parse(costs[5]) +
+               float.Parse(Item[7]) / 10f * float.Parse(costs[6]) +
                float.Parse(CalculateCostOfItem(Item[8])) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10])) * float.Parse(Item[11]) +
                float.Parse(CalculateCostOfItem(Item[12])) * float.Parse(Item[13]) + float.Parse(Item[14]));
