@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XOapp.UWP", "XOapp.UWP\XOap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XOapp.Android", "XOapp.Android\XOapp.Android.csproj", "{AECE9229-CFCD-4674-B20F-3DD9F527A81C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XOapp", "XOapp\XOapp.csproj", "{11B3EF30-D7A0-4653-B037-A37BB6B21D15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XOapp", "XOapp\XOapp.csproj", "{11B3EF30-D7A0-4653-B037-A37BB6B21D15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

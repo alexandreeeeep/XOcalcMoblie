@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/XOapp.Android/obj/Debug/110/110.iml" filepath="$PROJECT_DIR$/XOapp.Android/obj/Debug/110/110.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XOapp.Android/obj/Debug/120/120.iml" filepath="$PROJECT_DIR$/XOapp.Android/obj/Debug/120/120.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XOapp.Android/obj/Debug/130/130.iml" filepath="$PROJECT_DIR$/XOapp.Android/obj/Debug/130/130.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XOapp.Android/obj/Release/Release.iml" filepath="$PROJECT_DIR$/XOapp.Android/obj/Release/Release.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/XOapp.iml" filepath="$PROJECT_DIR$/.idea/XOapp.iml" />
+    </modules>
+  </component>
+</project>

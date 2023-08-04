@@ -1,21 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xaml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="XOapp.Views.AboutPage"
-             xmlns:vm="clr-namespace:XOapp.ViewModels"
+             xmlns:vm="clr-namespace:XOapp.ViewModels" xmlns:x1="http://schemas.microsoft.com/winfx/2009/xaml" x1:DataType="vm:AboutViewModel"
              Title="{Binding Title}">
     <StackLayout Orientation="Vertical">
-        
         <StackLayout Orientation="Vertical">
             <SearchBar MaxLength="20" IsSpellCheckEnabled="True" Placeholder="Search items..."
                        HorizontalTextAlignment="Center" TextChanged="SearchBar_TextChanged" SearchButtonPressed="searchBar_SearchButtonPressed" 
                        x:Name="searchBar"/>
             <ListView x:Name="searchResults" VerticalOptions="StartAndExpand" ItemTapped="searchResults_ItemTapped" HeightRequest="100"/>
+            
         </StackLayout>
 
-
+        
         <StackLayout Orientation="Horizontal" Padding="10" Spacing="30">
-            <Label x:Name="ItemName1" Text="Item 1 Cost" />
+            <Label x:Name="ItemName1" Text="Item 1 Cost"/>
             <Label x:Name="ItemName2" Text="Item 2 Cost"/>
             <Label x:Name="ItemName3" Text="Item 3 Cost"/>
         </StackLayout>

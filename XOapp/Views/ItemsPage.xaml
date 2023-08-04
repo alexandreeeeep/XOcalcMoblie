@@ -1,38 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xaml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="XOapp.Views.ItemsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:XOapp.ViewModels"  
-             xmlns:model="clr-namespace:XOapp.Models"  
+             xmlns:model="clr-namespace:XOapp.Models"
              x:Name="BrowseItemsPage">
     <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Scrap cost per 100: "/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Scrap cost per 100:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Scrap"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Copper cost per 100: "/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Copper cost per 100:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Copper"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Wires cost per 100: "/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Wires cost per 100:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Wires"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Plastic cost per 100: "/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Plastic cost per 100:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Plasric"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Batteries cost per 10: "/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Batteries cost per 10:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Batteries"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Electronics cost per 10: "/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Electronics cost per 10:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Electronics"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal" Spacing="30">
-            <Label Text="Uranium cost per 10: "/>
+            <Label Text="Uranium cost per 10:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Uranium"/>
         </StackLayout>
 

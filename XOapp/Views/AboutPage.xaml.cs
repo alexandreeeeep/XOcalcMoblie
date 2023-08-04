@@ -17,6 +17,7 @@ namespace XOapp.Views
         {
             InitializeComponent(); 
             string ItemFound;
+           
             AllItems = new List<string>();
             Array.Sort(ItemName);//sorts it into alphabetical order
             foreach (string line in ItemName)//itarates threw each line
@@ -134,7 +135,7 @@ namespace XOapp.Views
             searchBar.Text = e.Item.ToString();
         }
 
-        List<string> AllItems;
+        readonly List<string> AllItems;
         public string[] ItemName = {
   "small wheel_15_3_0_0_0_0_0_Empty_0_Empty_0_Empty_0_0",
 "small wheel st_15_3_0_0_0_0_0_Empty_0_Empty_0_Empty_0_0",
