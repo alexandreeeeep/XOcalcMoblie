@@ -21,11 +21,45 @@ namespace XOapp.Views
         public ItemsPage()
         {
             InitializeComponent();
+            string[] prices = SeparateList(DependencyService.Get<IfileService>().ReadFile()[0].ToString());
+            prices[0] = Scrap.Text;
+            prices[1] = Copper.Text;
+            prices[2] = Wires.Text;
+            prices[3] = Plasric.Text;
+            prices[4] = Batteries.Text;
+            prices[5] = Electronics.Text;
+            prices[6] = Uranium.Text;
+        }
+        string[] SeparateList(string ItemName)//finds the name in the text file
+        {
+            var Item = new string[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+            int CountForList = 0;
+            for (int i = 0; i < ItemName.Length; i++)
+            {//itarates threw each letter
+                if (ItemName[i] != '_')//finds the end of the first word
+                {
+                    Item[CountForList] += ItemName[i];
+                }
+                else
+                {
+                    CountForList++;
+                }
+            }
+            return Item;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            string[] Items = DependencyService.Get<IfileService>().ReadFile();
+            string[] prices = SeparateList(Items[0].ToString());
+            Scrap.Text = prices[0];
+            Copper.Text = prices[1];
+            Wires.Text = prices[2];
+            Plasric.Text = prices[3];
+            Batteries.Text = prices[4];
+            Electronics.Text=prices[5];
+            Uranium.Text =prices[6];
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
