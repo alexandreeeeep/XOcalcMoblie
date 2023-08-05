@@ -133,6 +133,7 @@ namespace XOapp.Views
         private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             searchBar.Text = e.Item.ToString();
+            Total.Text = "Cost: " + CalculateCostOfItem(e.Item.ToString());
         }
 
         readonly List<string> AllItems;
