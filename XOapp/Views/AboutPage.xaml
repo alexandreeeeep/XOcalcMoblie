@@ -10,7 +10,7 @@
                        HorizontalTextAlignment="Center" TextChanged="SearchBar_TextChanged" SearchButtonPressed="searchBar_SearchButtonPressed" 
                        x:Name="searchBar"/>
             <ListView x:Name="searchResults" VerticalOptions="StartAndExpand" ItemTapped="searchResults_ItemTapped" HeightRequest="100"/>
-            
+
         </StackLayout>
         <Grid RowSpacing="-10">
             <Label Grid.Row="0" Text="Scrap:"/>
@@ -51,7 +51,9 @@
             <Label Text="CraftingCost"/>
             <Entry x:Name="voucherCost" Text=""/>
         </StackLayout>
-        <Label Text="Cost: " x:Name="Total"/>
-
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Cost: " x:Name="Total"/>
+            <Button Clicked="CalculateButtonPressed" Text="Calculate"/>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

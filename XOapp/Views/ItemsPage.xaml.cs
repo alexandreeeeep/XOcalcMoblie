@@ -75,7 +75,6 @@ namespace XOapp.Views
                     inputBox.Text = e.OldTextValue;
                 }
             }
-
             else
             {
                 inputBox.Text = "";

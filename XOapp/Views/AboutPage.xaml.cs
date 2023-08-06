@@ -42,6 +42,52 @@ namespace XOapp.Views
 
             Total.Text = "Cost: " + CalculateCostOfItem(searchBar.Text, true);
         }
+        private void CalculateButtonPressed(object sender, EventArgs e)
+        {
+            string[] resources = DependencyService.Get<IfileService>().ReadFile();
+            string[] costs = SeparateList(resources[0]);
+            string[] Item = new string[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+            Item[1] = Scrap.Text;
+            Item[2] = Copper.Text;
+            Item[3] = Wires.Text;
+            Item[4] = Batteries.Text;
+            Item[5] = Plastic.Text;
+            Item[6] = Electronics.Text;
+            Item[7] = Uranium.Text;
+            Item[8] = Item1Cost.Text;
+            Item[9] = Item1Amount.Text;
+            Item[10] = Item2Cost.Text;
+            Item[11] = Item2Amount.Text;
+            Item[12] = Item3Cost.Text;
+            Item[13] = Item3Amount.Text;
+            Item[14] = voucherCost.Text;
+            Item = NullCheck(Item);
+            costs = NullCheck(costs);
+            //calculates value of item and calculates other items if needed
+            Total.Text = "Cost: " + Convert.ToString(float.Parse(costs[0]) * float.Parse(Item[1]) / 100f +//scrap
+               float.Parse(Item[2]) * float.Parse(costs[1]) / 100f +//copper
+               float.Parse(costs[2]) * float.Parse(Item[3]) / 100f  +//wires
+               float.Parse(Item[4]) * float.Parse(costs[4]) / 10f +//batteries
+               float.Parse(Item[5]) * float.Parse(costs[3]) / 100f +//plastic
+               float.Parse(Item[6]) * float.Parse(costs[5]) / 10f  +//electronics
+               float.Parse(Item[7]) * float.Parse(costs[6]) / 10f+//uranium 
+               float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
+               float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
+               float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
+
+        }
+        private string[] NullCheck(string[] items)
+        {
+            for (int i=0; items.Length > i; i++)
+            {
+                if (!float.TryParse(items[i], out _))
+                {
+                    items[i] = "0";
+                }
+            }
+            return items;
+
+        }
         private string CalculateCostOfItem(string ItemName, bool isFinalItem)//calculates cost of item
         {
 
@@ -61,6 +107,7 @@ namespace XOapp.Views
             string[] resources = DependencyService.Get<IfileService>().ReadFile();
             string[] costs = SeparateList(resources[0]);
 
+            costs = NullCheck(costs);
             if (isFinalItem == true)//displays values for the user to see
             {
                 Scrap.Text = Item[1];
