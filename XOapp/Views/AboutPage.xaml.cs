@@ -15,9 +15,9 @@ namespace XOapp.Views
     {
         public AboutPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             string ItemFound;
-           
+
             AllItems = new List<string>();
             Array.Sort(ItemName);//sorts it into alphabetical order
             foreach (string line in ItemName)//itarates threw each line
@@ -39,11 +39,12 @@ namespace XOapp.Views
         }
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-            
-            Total.Text = "Cost: " + CalculateCostOfItem(searchBar.Text);
+
+            Total.Text = "Cost: " + CalculateCostOfItem(searchBar.Text, true);
         }
-        private string CalculateCostOfItem(string ItemName)//calculates cost of item
+        private string CalculateCostOfItem(string ItemName, bool isFinalItem)//calculates cost of item
         {
+
             if (ItemName == "Empty" || ItemName == "")//nothing in search bar
             {
                 return "0";
@@ -57,8 +58,28 @@ namespace XOapp.Views
             {
                 return Item[0];
             }
-            string[] resources =DependencyService.Get<IfileService>().ReadFile();
+            string[] resources = DependencyService.Get<IfileService>().ReadFile();
             string[] costs = SeparateList(resources[0]);
+            if (isFinalItem == true)
+            {
+                Scrap.Text = Item[1];
+                Copper.Text = Item[2];
+                Wires.Text = Item[3];
+                Plastic.Text = Item[4];
+                Batteries.Text = Item[5];
+                Electronics.Text = Item[6];
+                Uranium.Text = Item[7];
+                Item1.Text = Item[8];
+                Item1Cost.Text = CalculateCostOfItem(Item[8], false);
+                Item1Amount.Text = Item[9];
+                Item2.Text = Item[10];
+                Item2Cost.Text = CalculateCostOfItem(Item[10], false);
+                Item2Amount.Text = Item[11];
+                Item3.Text = Item[12];
+                Item3Cost.Text = CalculateCostOfItem(Item[12], false);
+                Item3Amount.Text = Item[13];
+                voucherCost.Text = Item[14];
+            }
             //calculates value of item and calculates other items if needed
             return Convert.ToString(float.Parse(costs[0]) / 100f * float.Parse(Item[1]) +
                float.Parse(Item[2]) * float.Parse(costs[1]) / 100f +
@@ -67,9 +88,10 @@ namespace XOapp.Views
                float.Parse(Item[5]) / 100f * float.Parse(costs[3]) +
                float.Parse(Item[6]) / 10f * float.Parse(costs[5]) +
                float.Parse(Item[7]) / 10f * float.Parse(costs[6]) +
-               float.Parse(CalculateCostOfItem(Item[8])) * float.Parse(Item[9]) +
-               float.Parse(CalculateCostOfItem(Item[10])) * float.Parse(Item[11]) +
-               float.Parse(CalculateCostOfItem(Item[12])) * float.Parse(Item[13]) + float.Parse(Item[14]));
+               float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
+               float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
+               float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
+
         }
         string FindValue(string SearchItem)//finds the name in the text file
         {
@@ -115,7 +137,7 @@ namespace XOapp.Views
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             SearchBar searchBar = (SearchBar)sender;
-            List<string> results =new List<string>();
+            List<string> results = new List<string>();
             foreach (string item in AllItems)//finds all items
             {
                 if (item.Contains(searchBar.Text))
@@ -133,7 +155,7 @@ namespace XOapp.Views
         private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             searchBar.Text = e.Item.ToString();
-            Total.Text = "Cost: " + CalculateCostOfItem(e.Item.ToString());
+            Total.Text = "Cost: " + CalculateCostOfItem(e.Item.ToString(), true);
         }
 
         readonly List<string> AllItems;
@@ -362,6 +384,6 @@ namespace XOapp.Views
 "ripper_0_1000_0_1000_0_1000_600_fortune_1_mg14 arbiter_1_Empty_0_75",
 "scorpion_0_1000_0_1000_0_1000_600_pulsar_1_reaper_1_Empty_0_75"};
 
-        
+
     }
 }

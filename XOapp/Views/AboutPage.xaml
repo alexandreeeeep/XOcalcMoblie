@@ -4,7 +4,7 @@
              x:Class="XOapp.Views.AboutPage"
              xmlns:vm="clr-namespace:XOapp.ViewModels" xmlns:x1="http://schemas.microsoft.com/winfx/2009/xaml" x1:DataType="vm:AboutViewModel"
              Title="{Binding Title}">
-    <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Vertical" Padding="10">
         <StackLayout Orientation="Vertical">
             <SearchBar MaxLength="20" IsSpellCheckEnabled="True" Placeholder="Search items..."
                        HorizontalTextAlignment="Center" TextChanged="SearchBar_TextChanged" SearchButtonPressed="searchBar_SearchButtonPressed" 
@@ -12,18 +12,44 @@
             <ListView x:Name="searchResults" VerticalOptions="StartAndExpand" ItemTapped="searchResults_ItemTapped" HeightRequest="100"/>
             
         </StackLayout>
+        <Grid RowSpacing="-10">
+            <Label Grid.Row="0" Text="Scrap:"/>
+            <Label Grid.Row="1" Text="Copper:"/>
+            <Label Grid.Row="2" Text="Wires:"/>
+            <Label Grid.Row="3" Text="Plastic:"/>
+            <Label Grid.Row="4" Text="Batteries:"/>
+            <Label Grid.Row="5" Text="Electronics:"/>
+            <Label Grid.Row="6" Text="Uranium:"/>
 
-        
-        <StackLayout Orientation="Horizontal" Padding="10" Spacing="30">
-            <Label x:Name="ItemName1" Text="Item 1 Cost"/>
-            <Label x:Name="ItemName2" Text="Item 2 Cost"/>
-            <Label x:Name="ItemName3" Text="Item 3 Cost"/>
-        </StackLayout>
-        
-        <StackLayout Orientation="Horizontal" Padding="10" Spacing="30">
-            <Label Text="Item 1 amount"/>
-            <Label Text="Item 2 amount"/>
-            <Label Text="Item 3 amount"/>
+            <Entry Grid.Row="0" Grid.Column="1" x:Name="Scrap"/>
+            <Entry Grid.Row="1" Grid.Column="1" x:Name="Copper"/>
+            <Entry Grid.Row="2" Grid.Column="1" x:Name="Wires"/>
+            <Entry Grid.Row="3" Grid.Column="1" x:Name="Plastic"/>
+            <Entry Grid.Row="4" Grid.Column="1" x:Name="Batteries"/>
+            <Entry Grid.Row="5" Grid.Column="1" x:Name="Electronics"/>
+            <Entry Grid.Row="6" Grid.Column="1" x:Name="Uranium"/>
+            <Label Grid.Column="2"/>
+        </Grid>
+
+        <Grid RowSpacing="-10">
+            <Label x:Name="Item1" Text="Item Cost"/>
+            <Label x:Name="Item2" Grid.Column="1" Text="Item Cost"/>
+            <Label x:Name="Item3" Grid.Column="2" Text="Item Cost"/>
+            <Entry x:Name="Item1Cost" Grid.Column="0" Grid.Row="1"/>
+            <Entry x:Name="Item2Cost" Grid.Column="1" Grid.Row="1"/>
+            <Entry x:Name="Item3Cost" Grid.Column="2" Grid.Row="1"/>
+        </Grid>
+        <Grid RowSpacing="-10">
+            <Label Text="Item Quantity"/>
+            <Label Grid.Column="1" Text="Item Quantity"/>
+            <Label Grid.Column="2" Text="Item Quantity"/>
+            <Entry x:Name="Item1Amount" Grid.Column="0" Grid.Row="1"/>
+            <Entry x:Name="Item2Amount" Grid.Column="1" Grid.Row="1"/>
+            <Entry x:Name="Item3Amount" Grid.Column="2" Grid.Row="1"/>
+        </Grid>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="CraftingCost"/>
+            <Entry x:Name="voucherCost" Text=""/>
         </StackLayout>
         <Label Text="Cost: " x:Name="Total"/>
 

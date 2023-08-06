@@ -10,11 +10,13 @@
             <Color x:Key="Primary">#999999</Color>
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
             <Style TargetType="Entry">
+                <Setter Property="Placeholder" Value="Enter Value"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="PlaceholderColor" Value="Gray"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="Placeholder" Value="Input Cost"/>
                 <Setter Property="MinimumWidthRequest" Value="30"/>
             </Style>
             <Style TargetType="Button">
