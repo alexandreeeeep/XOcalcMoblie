@@ -60,13 +60,14 @@ namespace XOapp.Views
             }
             string[] resources = DependencyService.Get<IfileService>().ReadFile();
             string[] costs = SeparateList(resources[0]);
-            if (isFinalItem == true)
+
+            if (isFinalItem == true)//displays values for the user to see
             {
                 Scrap.Text = Item[1];
                 Copper.Text = Item[2];
                 Wires.Text = Item[3];
-                Plastic.Text = Item[4];
-                Batteries.Text = Item[5];
+                Batteries.Text = Item[4];
+                Plastic.Text = Item[5];
                 Electronics.Text = Item[6];
                 Uranium.Text = Item[7];
                 Item1.Text = Item[8];
@@ -81,13 +82,13 @@ namespace XOapp.Views
                 voucherCost.Text = Item[14];
             }
             //calculates value of item and calculates other items if needed
-            return Convert.ToString(float.Parse(costs[0]) / 100f * float.Parse(Item[1]) +
-               float.Parse(Item[2]) * float.Parse(costs[1]) / 100f +
-               float.Parse(costs[2]) / 100f * float.Parse(Item[3]) +
-               float.Parse(Item[4]) / 10f * float.Parse(costs[4]) +
-               float.Parse(Item[5]) / 100f * float.Parse(costs[3]) +
-               float.Parse(Item[6]) / 10f * float.Parse(costs[5]) +
-               float.Parse(Item[7]) / 10f * float.Parse(costs[6]) +
+            return Convert.ToString(float.Parse(costs[0]) / 100f * float.Parse(Item[1]) +//scrap
+               float.Parse(Item[2]) * float.Parse(costs[1]) / 100f +//copper
+               float.Parse(costs[2]) / 100f * float.Parse(Item[3]) +//wires
+               float.Parse(Item[4]) / 10f * float.Parse(costs[4]) +//batteries
+               float.Parse(Item[5]) / 100f * float.Parse(costs[3]) +//plastic
+               float.Parse(Item[6]) / 10f * float.Parse(costs[5]) +//electronics
+               float.Parse(Item[7]) / 10f * float.Parse(costs[6]) +//uranium 
                float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
                float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
