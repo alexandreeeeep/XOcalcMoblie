@@ -30,8 +30,13 @@ namespace XOapp.Droid
         public string[] ReadFile() {
             var fileName = "resources.txt";
             var destination = Path.Combine(getRootPath(), fileName);
+            if (!File.Exists(destination))
+            {
+                CreateFile("______");
+            }
             string[] lines = File.ReadAllLines(destination);
             return lines;
         }
+
     }
 }
