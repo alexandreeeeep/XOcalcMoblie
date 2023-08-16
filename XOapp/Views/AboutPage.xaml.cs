@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Xml;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XOapp.Interface;
@@ -74,7 +77,6 @@ namespace XOapp.Views
                float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
                float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
-
         }
         private string[] NullCheck(string[] items)
         {
@@ -90,7 +92,6 @@ namespace XOapp.Views
         }
         private string CalculateCostOfItem(string ItemName, bool isFinalItem)//calculates cost of item
         {
-
             if (ItemName == "Empty" || ItemName == "")//nothing in search bar
             {
                 return "0";
@@ -139,7 +140,6 @@ namespace XOapp.Views
                float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
                float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
-
         }
         string FindValue(string SearchItem)//finds the name in the text file
         {
@@ -432,6 +432,11 @@ namespace XOapp.Views
 "ripper_0_1000_0_1000_0_1000_600_fortune_1_mg14 arbiter_1_Empty_0_75",
 "scorpion_0_1000_0_1000_0_1000_600_pulsar_1_reaper_1_Empty_0_75"};
 
-
+        private void Item_Clicked(object sender, EventArgs e)
+        {
+            searchBar.Text = ((Button)sender).Text;
+            searchBar_SearchButtonPressed(sender,null);
+        }
+        
     }
 }

@@ -20,12 +20,13 @@
                 <Setter Property="MinimumWidthRequest" Value="30"/>
             </Style>
             <Style TargetType="Button">
+                <Setter Property="TextColor" Value="Gray"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="Gray" />
+                                    <Setter Property="BackgroundColor" Value="LightGray" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
