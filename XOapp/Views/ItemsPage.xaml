@@ -35,6 +35,6 @@
             <Label Text="Uranium cost per 10:"/>
             <Entry TextChanged="Entry_TextChanged" x:Name="Uranium"/>
         </StackLayout>
-
+        <Label/>
     </StackLayout>
 </ContentPage>

@@ -42,14 +42,16 @@ namespace XOapp.Views
         }
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-
-            Total.Text = "Cost: " + CalculateCostOfItem(searchBar.Text, true);
+            string cost = CalculateCostOfItem(searchBar.Text, true);
+            Total.Text = "Cost: " + cost;
+            TotalProfit.Text = "Minimum price needed to profit: " + (float.Parse(cost)/.9).ToString();
         }
         private void CalculateButtonPressed(object sender, EventArgs e)
         {
             string[] resources = DependencyService.Get<IfileService>().ReadFile();
             string[] costs = SeparateList(resources[0]);
             string[] Item = new string[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+            //gets values from text boxes
             Item[1] = Scrap.Text;
             Item[2] = Copper.Text;
             Item[3] = Wires.Text;
@@ -64,16 +66,28 @@ namespace XOapp.Views
             Item[12] = Item3Cost.Text;
             Item[13] = Item3Amount.Text;
             Item[14] = voucherCost.Text;
-            Item = NullCheck(Item);
+
             costs = NullCheck(costs);
+            Item = NullCheck(Item);
+            float[] totalCosts = {float.Parse(costs[0]) * float.Parse(Item[1]) / 100f,//scrap
+               float.Parse(Item[2]) * float.Parse(costs[1]) / 100f ,//copper
+               float.Parse(costs[2]) * float.Parse(Item[3]) / 100f ,//wires
+               float.Parse(Item[4]) * float.Parse(costs[4]) / 10f ,//batteries
+               float.Parse(Item[5]) * float.Parse(costs[3]) / 100f ,//plastic
+               float.Parse(Item[6]) * float.Parse(costs[5]) / 10f ,//electronics
+               float.Parse(Item[7]) * float.Parse(costs[6]) / 10f};//uranium 
+
+            ScrapCost.Text= "Cost: "+totalCosts[0].ToString();
+            CopperCost.Text= "Cost: "+totalCosts[1].ToString();
+            WiresCost.Text= "Cost: "+totalCosts[2].ToString();
+            BatteriesCost.Text= "Cost: "+totalCosts[3].ToString();
+            PlasticCost.Text= "Cost: "+totalCosts[4].ToString();
+            ElectronicsCost.Text= "Cost: "+ totalCosts[5].ToString();
+            UraniumCost.Text= "Cost: "+totalCosts[6].ToString();
+
             //calculates value of item and calculates other items if needed
-            Total.Text = "Cost: " + Convert.ToString(float.Parse(costs[0]) * float.Parse(Item[1]) / 100f +//scrap
-               float.Parse(Item[2]) * float.Parse(costs[1]) / 100f +//copper
-               float.Parse(costs[2]) * float.Parse(Item[3]) / 100f  +//wires
-               float.Parse(Item[4]) * float.Parse(costs[4]) / 10f +//batteries
-               float.Parse(Item[5]) * float.Parse(costs[3]) / 100f +//plastic
-               float.Parse(Item[6]) * float.Parse(costs[5]) / 10f  +//electronics
-               float.Parse(Item[7]) * float.Parse(costs[6]) / 10f+//uranium 
+            Total.Text = "Cost: " + Convert.ToString(totalCosts[0] + totalCosts[1]+
+                totalCosts[2] + totalCosts[3] + totalCosts[4] + totalCosts[5] + totalCosts[6] +
                float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
                float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
@@ -198,12 +212,12 @@ namespace XOapp.Views
                 searchResults.ItemsSource = results;
             }
             else { searchResults.ItemsSource = null; }//displayes nothing if there is nothing in search bar
-
         }
         private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             searchBar.Text = e.Item.ToString();
             Total.Text = "Cost: " + CalculateCostOfItem(e.Item.ToString(), true);
+            CalculateButtonPressed(null,null);
         }
 
         readonly List<string> AllItems;

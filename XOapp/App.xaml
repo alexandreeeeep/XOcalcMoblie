@@ -17,7 +17,7 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="PlaceholderColor" Value="Gray"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="MinimumWidthRequest" Value="30"/>
+                <Setter Property="MaxLength" Value="60"/>
             </Style>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="Gray"/>
