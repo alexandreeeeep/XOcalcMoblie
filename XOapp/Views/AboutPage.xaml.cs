@@ -216,7 +216,10 @@ namespace XOapp.Views
         private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             searchBar.Text = e.Item.ToString();
-            Total.Text = "Cost: " + CalculateCostOfItem(e.Item.ToString(), true);
+            float cost = float.Parse(CalculateCostOfItem(e.Item.ToString(), true))/0.9f;
+            Total.Text = "Cost: " +cost;
+            TotalProfit.Text = "Minimum sale price for profit: " +cost;
+
             CalculateButtonPressed(null,null);
         }
 
@@ -433,6 +436,8 @@ namespace XOapp.Views
 "aegis-prime_100_750_0_750_0_750_0_barrier ix_2_chameleon mk2_2_meat grinder_1_75",
 "apollo iv_100_750_0_750_0_750_0_quantum_2_bigfoot st_2_gasgen_1_75",
 "thor-6s_0_750_600_750_0_600_0_sleipnir_2_ka-2 flywheel_2_gasgen_1_75",
+"blueprint storage_100_500_0_200_0_200_0_Empty_0_Empty_0_Empty_0_75",
+"storage expantion_100_500_0_200_0_0_200_Empty_0_Empty_0_Empty_0_75",
 
 
 "punisher_0_1000_0_1000_0_1000_600_aspect_1_cyclone_1_Empty_0_75",
