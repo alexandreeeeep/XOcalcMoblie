@@ -86,11 +86,14 @@ namespace XOapp.Views
             UraniumCost.Text= "Cost: "+totalCosts[6].ToString();
 
             //calculates value of item and calculates other items if needed
-            Total.Text = "Cost: " + Convert.ToString(totalCosts[0] + totalCosts[1]+
+
+            float cost = totalCosts[0] + totalCosts[1] +
                 totalCosts[2] + totalCosts[3] + totalCosts[4] + totalCosts[5] + totalCosts[6] +
                float.Parse(CalculateCostOfItem(Item[8], false)) * float.Parse(Item[9]) +
                float.Parse(CalculateCostOfItem(Item[10], false)) * float.Parse(Item[11]) +
-               float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]));
+               float.Parse(CalculateCostOfItem(Item[12], false)) * float.Parse(Item[13]) + float.Parse(Item[14]) / 0.9f;
+            Total.Text = "Cost: " + cost;
+            TotalProfit.Text = "Minimum sale price for profit: " + cost/0.9f;
         }
         private string[] NullCheck(string[] items)
         {
@@ -216,10 +219,9 @@ namespace XOapp.Views
         private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             searchBar.Text = e.Item.ToString();
-            float cost = float.Parse(CalculateCostOfItem(e.Item.ToString(), true))/0.9f;
+            float cost = float.Parse(CalculateCostOfItem(e.Item.ToString(), true));
             Total.Text = "Cost: " +cost;
-            TotalProfit.Text = "Minimum sale price for profit: " +cost;
-
+            TotalProfit.Text = "Minimum sale price for profit: " +cost/0.9f;
             CalculateButtonPressed(null,null);
         }
 
@@ -437,7 +439,7 @@ namespace XOapp.Views
 "apollo iv_100_750_0_750_0_750_0_quantum_2_bigfoot st_2_gasgen_1_75",
 "thor-6s_0_750_600_750_0_600_0_sleipnir_2_ka-2 flywheel_2_gasgen_1_75",
 "blueprint storage_100_500_0_200_0_200_0_Empty_0_Empty_0_Empty_0_75",
-"storage expantion_100_500_0_200_0_0_200_Empty_0_Empty_0_Empty_0_75",
+"storage expantion_100_500_0_200_0_200_0_Empty_0_Empty_0_Empty_0_75",
 
 
 "punisher_0_1000_0_1000_0_1000_600_aspect_1_cyclone_1_Empty_0_75",
@@ -455,6 +457,7 @@ namespace XOapp.Views
         {
             searchBar.Text = ((Button)sender).Text;
             searchBar_SearchButtonPressed(sender,null);
+            
         }
         
     }
