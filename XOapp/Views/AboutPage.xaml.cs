@@ -120,7 +120,7 @@ namespace XOapp.Views
             string[] Item = SeparateList(FindValue(ItemName));//finds the item and creates list
             if (Item[0] == "Item Not Found (make sure the item is spelt correctly and is craftable)")
             {
-                return Item[0];
+                return "0";
             }
             string[] resources = DependencyService.Get<IfileService>().ReadFile();
             string[] costs = SeparateList(resources[0]);
@@ -217,7 +217,7 @@ namespace XOapp.Views
             else { searchResults.ItemsSource = null; }//displayes nothing if there is nothing in search bar
         }
         private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
+        {//calculates cost of item when its tapped
             searchBar.Text = e.Item.ToString();
             float cost = float.Parse(CalculateCostOfItem(e.Item.ToString(), true));
             Total.Text = "Cost: " +cost;
@@ -441,23 +441,23 @@ namespace XOapp.Views
 "blueprint storage_100_500_0_200_0_200_0_Empty_0_Empty_0_Empty_0_75",
 "storage expantion_100_500_0_200_0_200_0_Empty_0_Empty_0_Empty_0_75",
 
-
-"punisher_0_1000_0_1000_0_1000_600_aspect_1_cyclone_1_Empty_0_75",
-"jormungandr_0_1000_0_1000_0_1000_600_nidhogg_1_helios_1_Empty_0_75",
-"breaker_0_1000_0_1000_0_1000_600_hammerfall_1_fortune_1_Empty_0_75",
-"zs-52 mastodon_0_1000_0_1000_0_1000_600_zs-46 mammoth_1_nidhogg_1_Empty_0_75",
-"cc-18 tythoon_0_1000_0_1000_0_1000_600_bc-17 tsunami_1_mandrake_1_Empty_0_75",
-"flash i_0_1000_0_1000_0_1000_600_spark iii_1_draco_1_Empty_0_75",
-"firebug_0_1000_0_1000_0_1000_600_zs-46 mammoth_1_harvester_1_Empty_0_75",
-"porcupine_0_1000_0_1000_0_1000_600_retcher_1_hurricane_1_Empty_0_75",
-"ripper_0_1000_0_1000_0_1000_600_fortune_1_mg14 arbiter_1_Empty_0_75",
+"rl-9 helicon_500_0_500_500_0_0_300_omamori_2_ra-1 heather_2_Empty_0_0",
+"odin_0_500_0_500_0_500_200_Thor-6S_1_stillwind_1_Empty_0_0",
+"punisher_0_1000_0_1000_0_1000_600_aspect_1_cyclone_1_Empty_0_0",
+"jormungandr_0_1000_0_1000_0_1000_600_nidhogg_1_helios_1_Empty_0_0",
+"breaker_0_1000_0_1000_0_1000_600_hammerfall_1_fortune_1_Empty_0_0",
+"zs-52 mastodon_0_1000_0_1000_0_1000_600_zs-46 mammoth_1_nidhogg_1_Empty_0_0",
+"cc-18 tythoon_0_1000_0_1000_0_1000_600_bc-17 tsunami_1_mandrake_1_Empty_0_0",
+"flash i_0_1000_0_1000_0_1000_600_spark iii_1_draco_1_Empty_0_0",
+"firebug_0_1000_0_1000_0_1000_600_zs-46 mammoth_1_harvester_1_Empty_0_0",
+"porcupine_0_1000_0_1000_0_1000_600_retcher_1_hurricane_1_Empty_0_0",
+"ripper_0_1000_0_1000_0_1000_600_fortune_1_mg14 arbiter_1_Empty_0_0",
 "scorpion_0_1000_0_1000_0_1000_600_pulsar_1_reaper_1_Empty_0_75"};
 
         private void Item_Clicked(object sender, EventArgs e)
         {
             searchBar.Text = ((Button)sender).Text;
             searchBar_SearchButtonPressed(sender,null);
-            
         }
         
     }
